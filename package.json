@@ -1,0 +1,23 @@
+{
+  "name": "reactapp",
+  "version": "1.0.0",
+  "description": "This repository is create to assist learning React from Udemy",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhmanmai/reactApp.git"
+  },
+  "author": "Minh Mai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhmanmai/reactApp/issues"
+  },
+  "homepage": "https://github.com/minhmanmai/reactApp#readme"
+}
