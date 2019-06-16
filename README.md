@@ -1,2 +1,2 @@
 # reactApp
-This repository is create to assist learning React from Udemy
+This repository is created to assist learning React from Udemy
