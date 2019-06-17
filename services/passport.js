@@ -12,9 +12,9 @@ passport.serializeUser((user, done) => {
 //get id from cookie and turn into user
 passport.deserializeUser((id, done) => {
     User.findById(id)
-    .then(user => {
-        done(null, user);
-    })
+        .then(user => {
+            done(null, user);
+        })
 })
 
 passport.use(new GoogleStrategy(
@@ -24,17 +24,12 @@ passport.use(new GoogleStrategy(
         callbackURL: "/auth/google/callback",
         proxy: true
     },
-    (accessToken, refreshToken, profile, done )=> {
-        User.findOne({googleId: profile.id})
-        //asychronous findOne() function response is passed to then(), that response is called existingUser
-        .then((existingUser) => {
-            if (existingUser) {
-                done(null, existingUser);
-            }else {
-                new User ({ googleId: profile.id}).save()
-                //same thing happens again for asynchronous function save(), response is called user.
-                .then(user => done(null, user));
-            }
-        })
-
-    }));
+    async (accessToken, refreshToken, profile, done) => {
+        const existingUser = await User.findOne({ googleId: profile.id })
+        if (existingUser) {
+            done(null, existingUser);
+        }
+        const user = await new User({ googleId: profile.id }).save()
+        done(null, user);
+    }
+));
