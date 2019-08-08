@@ -5,8 +5,14 @@ const authRoutes = require("./routes/authRoutes");
 const mongoose = require('mongoose');
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require('body-parser');
 require("./models/User");
 require("./services/passport");
+
+
+app.use(bodyParser.json()); // support json encoded bodies
+
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(
     cookieSession({
